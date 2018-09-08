@@ -18,16 +18,7 @@ def IR_turn_down():
     os.system('irsend SEND_ONCE AIR KEY_DOWN')
 
 
-def LED_turn_on():
-    pass
 
-
-def LED_turn_off():
-    pass
-
-
-def LED_shine():
-    pass
 
 
 if __name__ == '__main__':
