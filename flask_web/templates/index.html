@@ -1,32 +1,36 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>Home</title>
-<!-- for-mobile-apps -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="" />
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+	<title>Home</title>
+	<!-- for-mobile-apps -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="" />
+	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 		function hideURLbar(){ window.scrollTo(0,1); } </script>
-<!-- //for-mobile-apps -->
-<!-- js -->
-<script src="js/jquery-1.11.1.min.js"></script>
-<!-- //js -->
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+	<!-- //for-mobile-apps -->
+	<!-- js -->
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css" media="all" charset="utf-8" />
+	<script src="js/jquery-1.11.1.min.js"></script>
+	
+	<!-- //js
+	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+	 -->
 
-
-<!--字体
+	<!--字体
 <link href='http://fonts.googleapis.com/css?family=Josefin+Sans:400,100,100italic,300,300italic,400italic,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
 -->
 
 </head>
+
 <body>
 	<div class="main">
 		<div class="w3l_main_grid">
 			<div class="w3l_main_grid1">
 				<div class="w3l_main_grid1_left">
-					<img src="images/star.png" alt=" " class="img-responsive" />
+					<img src="../static/images/star.png" alt=" " class="img-responsive" />
 				</div>
 				<div class="w3l_main_grid1_right">
 					<div class="menu">
@@ -36,27 +40,27 @@
 								<i></i>
 								<i></i>
 							</a>
-						</span>	
-							<ul class="nav1">
-								<li><a href="#">Log In</a></li>
-								<li><a href="#">Sign Up</a></li>
-								<li><a href="#">Gallery</a></li>
-								<li><a href="#">Settings</a></li>
-							</ul> 	
-							<!-- script-for-menu -->
-							 <script>
-							   $( "span.menu-icon" ).click(function() {
-								 $( "ul.nav1" ).slideToggle( 300, function() {
-								 // Animation complete.
-								  });
-								 });
-							</script>
-							<!-- /script-for-menu -->
+						</span>
+						<ul class="nav1">
+							<li><a href="#">Log In</a></li>
+							<li><a href="#">Sign Up</a></li>
+							<li><a href="#">Gallery</a></li>
+							<li><a href="#">Settings</a></li>
+						</ul>
+						<!-- script-for-menu -->
+						<script>
+							$("span.menu-icon").click(function () {
+								$("ul.nav1").slideToggle(300, function () {
+									// Animation complete.
+								});
+							});
+						</script>
+						<!-- /script-for-menu -->
 					</div>
 				</div>
 				<div class="clear"> </div>
 				<div class="w3l_main_grid1_sub">
-					<img src="images/1.png" alt=" " class="img-responsive" />
+					<img src="../static/images/1.png" alt=" " class="img-responsive" />
 					<h2>Meagan Fisher</h2>
 				</div>
 			</div>
@@ -65,12 +69,13 @@
 
 					<div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
 						<div class="resp-tabs-container">
-						
+
 							<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-1">
 								<div class="wthree_tab_grid">
 									<h4>About Me</h4>
 									<p class="eget">turpis ultricies eget estibulum commodo justo non nibh tempor finibus</p>
-									<p class="eget1">Aliquam sodales dolor ac lorem vulputate, eu maximus velit semper. Sed erat lacus, ultrices in iaculis ac, laoreet quis felis</p>
+									<p class="eget1">Aliquam sodales dolor ac lorem vulputate, eu maximus velit semper. Sed erat lacus, ultrices
+										in iaculis ac, laoreet quis felis</p>
 									<div class="wthree_tab_grid_sub">
 										<div class="wthree_tab_grid_sub_left">
 											<h5>321</h5>
@@ -100,12 +105,12 @@
 									</ol>
 								</div>
 							</div>
-							<div class="tlinks">Collect from <a href="http://www.cssmoban.com/" >网页模板</a></div>
+							<div class="tlinks">Collect from <a href="http://www.cssmoban.com/">网页模板</a></div>
 							<div class="tab-3 resp-tab-content" aria-labelledby="tab_item-3">
 								<div class="wthree_tab_grid">
 									<h4>Chats</h4>
 									<div class="agile_activity_row">
-										<div class="agile_activity_img"><img src="images/1.png" alt=" " /><span>10:00 PM</span></div>
+										<div class="agile_activity_img"><img src="../static/images/1.png" alt=" " /><span>10:00 PM</span></div>
 										<div class="agile_activity_img1">
 											<div class="agile_activity_sub">
 												<h5>Meagan Fisher</h5>
@@ -122,11 +127,11 @@
 												<p>Hi,How are you ? What about our next meeting?</p>
 											</div>
 										</div>
-										<div class="agile_activity_img"><img src="images/6.png" class="img-responsive" alt=""><span>10:02 PM</span></div>
+										<div class="agile_activity_img"><img src="../static/images/6.png" class="img-responsive" alt=""><span>10:02 PM</span></div>
 										<div class="clear"> </div>
 									</div>
 									<div class="agile_activity_row">
-										<div class="agile_activity_img"><img src="images/1.png" alt=" " /><span>10:10 PM</span></div>
+										<div class="agile_activity_img"><img src="../static/images/1.png" alt=" " /><span>10:10 PM</span></div>
 										<div class="agile_activity_img1">
 											<div class="agile_activity_sub">
 												<h5>Meagan Fisher</h5>
@@ -141,23 +146,25 @@
 								<div class="wthree_tab_grid">
 									<h4>Contact Me</h4>
 									<ul class="wthree_tab_grid_list">
-										<li><img src="images/call.png" alt=" " class="img-responsive" /></li>
+										<li><img src="../static/images/call.png" alt=" " class="img-responsive" /></li>
 										<li>Mobile<span>+123 234 4342</span></li>
 									</ul>
 									<ul class="wthree_tab_grid_list">
-										<li><img src="images/mail.png" alt=" " class="img-responsive" /></li>
+										<li><img src="../static/images/mail.png" alt=" " class="img-responsive" /></li>
 										<li>Mail Me<span><a href="mailto:info@example.com">info@example.com</a></span></li>
 									</ul>
 									<ul class="wthree_tab_grid_list">
-										<li><img src="images/address.png" alt=" " class="img-responsive" /></li>
+										<li><img src="../static/images/address.png" alt=" " class="img-responsive" /></li>
 										<li>Address<span>123 Avenue, Dollar Street, NYC.</span></li>
 									</ul>
 								</div>
 							</div>
 						</div>
-						
+
 						<ul class="resp-tabs-list">
-							<li class="resp-tab-item" aria-controls="tab_item-1" role="tab"><h2><span class="w3ls_figure"> </span></h2></li>
+							<li class="resp-tab-item" aria-controls="tab_item-1" role="tab">
+								<h2><span class="w3ls_figure"> </span></h2>
+							</li>
 							<li class="resp-tab-item" aria-controls="tab_item-2" role="tab"><span class="w3ls_figure1"> </span></li>
 							<li class="resp-tab-item" aria-controls="tab_item-3" role="tab"><span class="w3ls_figure2"> </span></li>
 							<li class="resp-tab-item" aria-controls="tab_item-4" role="tab"><span class="w3ls_figure3"> </span></li>
@@ -179,4 +186,5 @@
 		</div>
 	</div>
 </body>
+
 </html>
