@@ -64,4 +64,5 @@ def led_shine():
 
 
 if __name__ == '__main__':
+    os.system('sudo /etc/init.d/lircd restart')
     app.run(port=80,  debug=True)
