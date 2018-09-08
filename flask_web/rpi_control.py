@@ -3,19 +3,19 @@ import os
 
 
 def IR_turn_on():
-    pass
+    os.system('irsend SEND_ONCE AIR KEY_OPEN')
 
 
 def IR_turn_off():
-    pass
+    os.system('irsend SEND_ONCE AIR KEY_OFF')
 
 
 def IR_turn_up():
-    pass
+    os.system('irsend SEND_ONCE AIR KEY_UP')
 
 
 def IR_turn_down():
-    pass
+    os.system('irsend SEND_ONCE AIR KEY_DOWN')
 
 
 def LED_turn_on():
