@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-from Raspi_BMP085 import BMP085
+from .Raspi_BMP085 import BMP085
 
 # ===========================================================================
 # Example Code

@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 import time
-from Raspi_I2C import Raspi_I2C
+from .Raspi_I2C import Raspi_I2C
 
 # ===========================================================================
 # BMP085 Class
