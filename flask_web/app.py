@@ -44,10 +44,7 @@ def Judge_on_off():
 
 @app.route('/')
 def hello_world():
-    global temp
-    global wet
-    global Pi_time
-    return render_template('index.html', Temperature=temp[-1], Wet=wet[-1], Time=Pi_time[-1])
+    return Judge_on_off()
 
 
 @app.route('/IR_ON')
@@ -185,7 +182,7 @@ def led_shine():
 
 
 def run_app():
-    app.run(port=80)
+    app.run(host='0.0.0.0', port=80, debug=True)
 
 
 if __name__ == '__main__':
