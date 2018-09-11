@@ -10,7 +10,7 @@ from time import sleep
 
 app = Flask(__name__)
 
-state = 0    #记录空调状态
+state = 0  # 记录空调状态
 temp = [26]
 wet = [12]
 Pi_time = [1]
@@ -37,9 +37,9 @@ def Judge_on_off():
     global wet
     global Pi_time
     if state > 0:
-        return render_template('index.html', Temperature=temp[-1], Wet=wet[-1], Time=Pi_time[-1], Turn="turn off", State = state)
+        return render_template('index.html', Temperature=temp[-1], Wet=wet[-1], Time=Pi_time[-1], Turn="turn off", State=state)
     else:
-        return render_template('index.html', Temperature=temp[-1], Wet=wet[-1], Time=Pi_time[-1], Turn="turn on", State = state)
+        return render_template('index.html', Temperature=temp[-1], Wet=wet[-1], Time=Pi_time[-1], Turn="turn on", State=state)
 
 
 @app.route('/')
@@ -67,132 +67,100 @@ def ir_on():
 @app.route('/IR_UP')
 def ir_up():
     global state
-    switch(state):
-        case 0:
-        case 30:
-            break
-        case 16: 
-            print('ir_up')
-            os.system('irsend SEND_ONCE AIR KEY_17')
-            break
-        case 17: 
-            print('ir_up')
-            os.system('irsend SEND_ONCE AIR KEY_18')
-            break
-        case 18: 
-            print('ir_up')
-            os.system('irsend SEND_ONCE AIR KEY_19')
-            break
-        case 19: 
-            print('ir_up')
-            os.system('irsend SEND_ONCE AIR KEY_20')
-            break
-        case 20: 
-            print('ir_up')
-            os.system('irsend SEND_ONCE AIR KEY_21')
-            break
-        case 21: 
-            print('ir_up')
-            os.system('irsend SEND_ONCE AIR KEY_22')
-            break
-        case 22: 
-            print('ir_up')
-            os.system('irsend SEND_ONCE AIR KEY_23')
-            break
-        case 23: 
-            print('ir_up')
-            os.system('irsend SEND_ONCE AIR KEY_24')
-            break
-        case 24: 
-            print('ir_up')
-            os.system('irsend SEND_ONCE AIR KEY_25')
-            break
-        case 25: 
-            print('ir_up')
-            os.system('irsend SEND_ONCE AIR KEY_26')
-            break
-        case 26: 
-            print('ir_up')
-            os.system('irsend SEND_ONCE AIR KEY_27')
-            break
-        case 27: 
-            print('ir_up')
-            os.system('irsend SEND_ONCE AIR KEY_28')
-            break
-        case 28: 
-            print('ir_up')
-            os.system('irsend SEND_ONCE AIR KEY_29')
-            break
-        case 29: 
-            print('ir_up')
-            os.system('irsend SEND_ONCE AIR KEY_30')
-            break   
+    if state == 0 or state == 30:
+        pass
+    elif state == 16:
+        print('ir_up')
+        os.system('irsend SEND_ONCE AIR KEY_17')
+    elif state == 17:
+        print('ir_up')
+        os.system('irsend SEND_ONCE AIR KEY_18')
+    elif state == 18:
+        print('ir_up')
+        os.system('irsend SEND_ONCE AIR KEY_19')
+    elif state == 19:
+        print('ir_up')
+        os.system('irsend SEND_ONCE AIR KEY_20')
+    elif state == 20:
+        print('ir_up')
+        os.system('irsend SEND_ONCE AIR KEY_21')
+    elif state == 21:
+        print('ir_up')
+        os.system('irsend SEND_ONCE AIR KEY_22')
+    elif state == 22:
+        print('ir_up')
+        os.system('irsend SEND_ONCE AIR KEY_23')
+    elif state == 23:
+        print('ir_up')
+        os.system('irsend SEND_ONCE AIR KEY_24')
+    elif state == 24:
+        print('ir_up')
+        os.system('irsend SEND_ONCE AIR KEY_25')
+    elif state == 25:
+        print('ir_up')
+        os.system('irsend SEND_ONCE AIR KEY_26')
+    elif state == 26:
+        print('ir_up')
+        os.system('irsend SEND_ONCE AIR KEY_27')
+    elif state == 27:
+        print('ir_up')
+        os.system('irsend SEND_ONCE AIR KEY_28')
+    elif state == 28:
+        print('ir_up')
+        os.system('irsend SEND_ONCE AIR KEY_29')
+    elif state == 29:
+        print('ir_up')
+        os.system('irsend SEND_ONCE AIR KEY_30')
     return Judge_on_off()
 
 
 @app.route('/IR_DOWN')
 def ir_DOWN():
     global state
-    switch(state):
-        case 0:
-        case 16:
-            break
-        case 17: 
-            print('ir_down')
-            os.system('irsend SEND_ONCE AIR KEY_16')
-            break
-        case 18: 
-            print('ir_down')
-            os.system('irsend SEND_ONCE AIR KEY_17')
-            break
-        case 19: 
-            print('ir_down')
-            os.system('irsend SEND_ONCE AIR KEY_18')
-            break
-        case 20: 
-            print('ir_down')
-            os.system('irsend SEND_ONCE AIR KEY_19')
-            break
-        case 21: 
-            print('ir_down')
-            os.system('irsend SEND_ONCE AIR KEY_20')
-            break
-        case 22: 
-            print('ir_down')
-            os.system('irsend SEND_ONCE AIR KEY_21')
-            break
-        case 23: 
-            print('ir_down')
-            os.system('irsend SEND_ONCE AIR KEY_22')
-            break
-        case 24: 
-            print('ir_down')
-            os.system('irsend SEND_ONCE AIR KEY_23')
-            break
-        case 25: 
-            print('ir_down')
-            os.system('irsend SEND_ONCE AIR KEY_24')
-            break
-        case 26: 
-            print('ir_down')
-            os.system('irsend SEND_ONCE AIR KEY_25')
-            break
-        case 27: 
-            print('ir_down')
-            os.system('irsend SEND_ONCE AIR KEY_26')
-            break
-        case 28: 
-            print('ir_down')
-            os.system('irsend SEND_ONCE AIR KEY_27')
-            break
-        case 29: 
-            print('ir_down')
-            os.system('irsend SEND_ONCE AIR KEY_28')
-            break 
-        case 30: 
-            print('ir_down')
-            os.system('irsend SEND_ONCE AIR KEY_29')
-            break 
+    if state == 0 or state == 16:
+        pass
+    elif state == 17:
+        print('ir_down')
+        os.system('irsend SEND_ONCE AIR KEY_16')
+    elif state == 18:
+        print('ir_down')
+        os.system('irsend SEND_ONCE AIR KEY_17')
+    elif state == 19:
+        print('ir_down')
+        os.system('irsend SEND_ONCE AIR KEY_18')
+    elif state == 20:
+        print('ir_down')
+        os.system('irsend SEND_ONCE AIR KEY_19')
+    elif state == 21:
+        print('ir_down')
+        os.system('irsend SEND_ONCE AIR KEY_20')
+    elif state == 22:
+        print('ir_down')
+        os.system('irsend SEND_ONCE AIR KEY_21')
+    elif state == 23:
+        print('ir_down')
+        os.system('irsend SEND_ONCE AIR KEY_22')
+    elif state == 24:
+        print('ir_down')
+        os.system('irsend SEND_ONCE AIR KEY_23')
+    elif state == 25:
+        print('ir_down')
+        os.system('irsend SEND_ONCE AIR KEY_24')
+    elif state == 26:
+        print('ir_down')
+        os.system('irsend SEND_ONCE AIR KEY_25')
+    elif state == 27:
+        print('ir_down')
+        os.system('irsend SEND_ONCE AIR KEY_26')
+    elif state == 28:
+        print('ir_down')
+        os.system('irsend SEND_ONCE AIR KEY_27')
+    elif state == 29:
+        print('ir_down')
+        os.system('irsend SEND_ONCE AIR KEY_28')
+    elif state == 30:
+        print('ir_down')
+        os.system('irsend SEND_ONCE AIR KEY_29')
     return Judge_on_off()
 
 
