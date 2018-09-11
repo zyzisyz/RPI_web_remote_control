@@ -50,12 +50,12 @@ def ir_on():
     global Pi_time
     if num % 2 == 0:
         print('ir_on')
-        os.system('bash irsend SEND_ONCE AIR KEY_OPEN')
+        os.system('irsend SEND_ONCE AIR KEY_OPEN')
         num += 1
         return render_template('index.html', Temperature=temp[-1], Wet=wet[-1], Time=Pi_time[-1])
     else:
         print("ir_off")
-        os.system('bash irsend SEND_ONCE AIR KEY_OFF')
+        os.system('irsend SEND_ONCE AIR KEY_OFF')
         num += 1
         return render_template('index.html', Temperature=temp[-1], Wet=wet[-1], Time=Pi_time[-1])
 
@@ -66,7 +66,7 @@ def ir_up():
     global wet
     global Pi_time
     print('ir_up')
-    os.system('bash irsend SEND_ONCE AIR KEY_UP')
+    os.system('irsend SEND_ONCE AIR KEY_UP')
     return render_template('index.html', Temperature=temp[-1], Wet=wet[-1], Time=Pi_time[-1])
 
 
@@ -76,7 +76,7 @@ def ir_DOWN():
     global wet
     global Pi_time
     print('ir_down')
-    os.system('bash irsend SEND_ONCE AIR KEY_DOWN')
+    os.system('irsend SEND_ONCE AIR KEY_DOWN')
     return render_template('index.html', Temperature=temp[-1], Wet=wet[-1], Time=Pi_time[-1])
 
 
@@ -112,7 +112,7 @@ def run_app():
 
 
 if __name__ == '__main__':
-    os.system('bash sudo /etc/init.d/lircd restart')
+    os.system('sudo /etc/init.d/lircd restart')
     threads = []
     threads.append(threading.Thread(target=update_data))
     threads.append(threading.Thread(target=run_app))
