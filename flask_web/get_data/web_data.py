@@ -1,6 +1,7 @@
 #!python
 import datetime
 import json
+from Raspi_BMP085 import BMP085
 
 
 def get_time():

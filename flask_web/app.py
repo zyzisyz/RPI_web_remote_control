@@ -1,6 +1,5 @@
 import sqlite3
-from flask import Flask, request, session, g, redirect, url_for, abort, \
-    render_template, flash
+from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash
 from get_data import web_data
 import os
 from rpi_control import *
@@ -10,8 +9,8 @@ from time import sleep
 app = Flask(__name__)
 
 num = 0
-temp = [1]
-wet = [1]
+temp = [26]
+wet = [12]
 Pi_time = [1]
 
 
@@ -23,7 +22,7 @@ def update_data():
         global Pi_time
         temp.append(web_data.get_temperature())
         wet.append(web_data.get_wet())
-
+        
         print("temp:", temp[-1])
         print("wet:", wet[-1])
 
@@ -115,4 +114,3 @@ if __name__ == '__main__':
     threads.append(threading.Thread(target=app.run))
     for t in threads:
         t.start()
-
