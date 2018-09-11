@@ -22,7 +22,7 @@ def update_data():
         global Pi_time
         temp.append(web_data.get_temperature())
         wet.append(web_data.get_wet())
-        
+
         print("temp:", temp[-1])
         print("wet:", wet[-1])
 
@@ -107,10 +107,14 @@ def led_shine():
     return render_template('index.html', Temperature=temp[-1], Wet=wet[-1], Time=Pi_time[-1])
 
 
+def run_app():
+    app.run(host='0.0.0.0', port=80)
+
+
 if __name__ == '__main__':
     os.system('bash sudo /etc/init.d/lircd restart')
     threads = []
     threads.append(threading.Thread(target=update_data))
-    threads.append(threading.Thread(target=app.run))
+    threads.append(threading.Thread(target=run_app))
     for t in threads:
         t.start()
