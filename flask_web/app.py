@@ -10,9 +10,9 @@ from time import sleep
 app = Flask(__name__)
 
 num = 0
-temp = []
-wet = []
-Pi_time = []
+temp = [1]
+wet = [1]
+Pi_time = [1]
 
 
 # 更新数据库
@@ -23,11 +23,11 @@ def update_data():
         global Pi_time
         temp.append(web_data.get_temperature())
         wet.append(web_data.get_wet())
-        Pi_time.append(web_data.get_time())
+
         print("temp:", temp)
         print("wet:", wet)
-        print("Pi_time:", Pi_time)
-        sleep(1000)
+
+        sleep(1)
 
 
 @app.route('/')
@@ -108,18 +108,11 @@ def led_shine():
     return render_template('index.html', Temperature=temp[-1], Wet=wet[-1], Time=Pi_time[-1])
 
 
-def run_app():
-    app.run(host='0.0.0.0', port=80,  debug=True)
-
-
 if __name__ == '__main__':
     os.system('bash sudo /etc/init.d/lircd restart')
     threads = []
-    t1 = threading.Thread(target=update_data)
-    t2 = threading.Thread(target=run_app)
-    threads.append(t1)
-    threads.append(t2)
+    threads.append(threading.Thread(target=update_data))
+    threads.append(threading.Thread(target=app.run))
     for t in threads:
-        t.setDaemon(True)
         t.start()
 
