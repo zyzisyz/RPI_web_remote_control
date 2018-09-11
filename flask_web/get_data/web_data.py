@@ -1,7 +1,8 @@
 #!python
 import datetime
-import json
-from Raspi_BMP085 import BMP085
+from .Raspi_BMP085 import BMP085
+
+bmp = BMP085(0x77)
 
 
 def get_time():
@@ -11,15 +12,14 @@ def get_time():
 
 
 def get_temperature():
-    temp = 26
-
-    print("temp:", temp)
-    return temp
+    temp = bmp.readTemperature()
+    print("Temperature: %.2f C" % temp)
+    return float(temp)
 
 
 def get_wet():
     wet = 12
-
+    
     print("wet:", wet)
     return wet
 
