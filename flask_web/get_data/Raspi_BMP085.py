@@ -1,5 +1,5 @@
 #!/usr/bin/python
-
+# -*- coding: utf-8 -*- 
 import time
 from .Raspi_I2C import Raspi_I2C
 

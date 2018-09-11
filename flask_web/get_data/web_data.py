@@ -1,4 +1,5 @@
 #!python
+# -*- coding: utf-8 -*- 
 import datetime
 from .Raspi_BMP085 import BMP085
 

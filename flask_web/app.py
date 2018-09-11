@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import sqlite3
 from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash
 from get_data import web_data
@@ -26,7 +28,14 @@ def update_data():
         print("temp:", temp[-1])
         print("wet:", wet[-1])
 
-        sleep(1000)
+        sleep(3)
+
+
+def Judge_on_off(num):
+    if num % 2 == 0:
+        return render_template('index.html', Temperature=temp[-1], Wet=wet[-1], Time=Pi_time[-1], Turn="turn off")
+    else:
+        return render_template('index.html', Temperature=temp[-1], Wet=wet[-1], Time=Pi_time[-1], Turn="turn on")
 
 
 @app.route('/')
@@ -52,12 +61,12 @@ def ir_on():
         print('ir_on')
         os.system('irsend SEND_ONCE AIR KEY_OPEN')
         num += 1
-        return render_template('index.html', Temperature=temp[-1], Wet=wet[-1], Time=Pi_time[-1])
+        return render_template('index.html', Temperature=temp[-1], Wet=wet[-1], Time=Pi_time[-1], Turn="turn off")
     else:
         print("ir_off")
         os.system('irsend SEND_ONCE AIR KEY_OFF')
         num += 1
-        return render_template('index.html', Temperature=temp[-1], Wet=wet[-1], Time=Pi_time[-1])
+        return render_template('index.html', Temperature=temp[-1], Wet=wet[-1], Time=Pi_time[-1], Turn="turn on")
 
 
 @app.route('/IR_UP')
@@ -65,9 +74,10 @@ def ir_up():
     global temp
     global wet
     global Pi_time
+    global num
     print('ir_up')
     os.system('irsend SEND_ONCE AIR KEY_UP')
-    return render_template('index.html', Temperature=temp[-1], Wet=wet[-1], Time=Pi_time[-1])
+    return Judge_on_off(num)
 
 
 @app.route('/IR_DOWN')
@@ -75,9 +85,10 @@ def ir_DOWN():
     global temp
     global wet
     global Pi_time
+    global num
     print('ir_down')
     os.system('irsend SEND_ONCE AIR KEY_DOWN')
-    return render_template('index.html', Temperature=temp[-1], Wet=wet[-1], Time=Pi_time[-1])
+    return Judge_on_off(num)
 
 
 @app.route('/LE_ON')
@@ -85,8 +96,9 @@ def led_on():
     global temp
     global wet
     global Pi_time
+    global num
     LED_turn_on()
-    return render_template('index.html', Temperature=temp[-1], Wet=wet[-1], Time=Pi_time[-1])
+    return Judge_on_off(num)
 
 
 @app.route('/LED_OFF')
@@ -94,8 +106,9 @@ def led_off():
     global temp
     global wet
     global Pi_time
+    global num
     LED_turn_off()
-    return render_template('index.html', Temperature=temp[-1], Wet=wet[-1], Time=Pi_time[-1])
+    return Judge_on_off(num)
 
 
 @app.route('/LED_SHINE')
@@ -103,9 +116,9 @@ def led_shine():
     global temp
     global wet
     global Pi_time
+    global num
     LED_shine()
-    return render_template('index.html', Temperature=temp[-1], Wet=wet[-1], Time=Pi_time[-1])
-
+    return Judge_on_off(num)
 
 def run_app():
     app.run(host='0.0.0.0', port=80)
