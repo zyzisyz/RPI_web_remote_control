@@ -24,10 +24,10 @@ def update_data():
         temp.append(web_data.get_temperature())
         wet.append(web_data.get_wet())
 
-        print("temp:", temp)
-        print("wet:", wet)
+        print("temp:", temp[-1])
+        print("wet:", wet[-1])
 
-        sleep(1)
+        sleep(1000)
 
 
 @app.route('/')
