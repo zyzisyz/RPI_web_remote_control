@@ -111,6 +111,7 @@ def ir_up():
     elif state == 29:
         print('ir_up')
         os.system('irsend SEND_ONCE AIR KEY_30')
+    state += 1
     return Judge_on_off()
 
 
@@ -161,6 +162,7 @@ def ir_DOWN():
     elif state == 30:
         print('ir_down')
         os.system('irsend SEND_ONCE AIR KEY_29')
+    state -= 1
     return Judge_on_off()
 
 
@@ -183,7 +185,7 @@ def led_shine():
 
 
 def run_app():
-    app.run(host='0.0.0.0', port=80)
+    app.run(port=80)
 
 
 if __name__ == '__main__':
