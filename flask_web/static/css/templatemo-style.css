@@ -61,12 +61,12 @@ p {
 
 .tlinks{text-indent:-9999px;height:0;line-height:0;font-size:0;overflow:hidden;}
 
-.banner .col-md-8 {
+.banner .col-md-7 {
 	padding-left: 0px;
 	padding-right: 5px;
 }
 
-.banner .col-md-4 {
+.banner .col-md-5 {
 	padding-right: 0px;
 	padding-left: 5px;
 }
@@ -186,12 +186,12 @@ p {
 	margin-top: 10px;
 }
 
-.best-offer .col-md-4 {
+.best-offer .col-md-5 {
 	padding-left: 0px;
 	padding-right: 5px;
 }
 
-.best-offer .col-md-8 {
+.best-offer .col-md-7 {
 	padding-right: 0px;
 	padding-left: 5px;
 }
@@ -467,12 +467,12 @@ p {
 	margin-top: 10px;	
 }
 
-.testimonial .col-md-8 {
+.testimonial .col-md-7 {
 	padding-left: 5px;
 	padding-right: 0px;
 }
 
-.testimonial .col-md-4 {
+.testimonial .col-md-5 {
 	padding-right: 5px;
 	padding-left: 0px;
 }
@@ -696,18 +696,18 @@ transition-delay: 0.3s;
 
 
 
-.contact-us .col-md-8 {
+.contact-us .col-md-7 {
 	padding-left: 0px;
 	padding-right: 5px;
 }
 
-.contact-us .col-md-4 {
+.contact-us .col-md-5 {
 	padding-right: 0px;
 	padding-left: 5px;
 }
 
 
-#contact .col-md-4 {
+#contact .col-md-5 {
 	padding-right: 15px;
 	padding-left: 15px;
 }
@@ -850,13 +850,13 @@ footer p em {
 
 @media (max-width: 991px) {
 
-	.banner .col-md-8 {
+	.banner .col-md-7 {
 		margin-top: 10px;
 		padding-left: 10px;
 		padding-right: 10px;
 	}
 
-	.banner .col-md-4 {
+	.banner .col-md-5 {
 		margin-top: 10px;
 		padding-right: 10px;
 		padding-left: 10px;
@@ -879,13 +879,13 @@ footer p em {
 		margin: 0 auto;
 	}
 
-	.best-offer .col-md-8 {
+	.best-offer .col-md-7 {
 		margin-top: 10px;
 		padding-left: 10px;
 		padding-right: 10px;
 	}
 
-	.best-offer .col-md-4 {
+	.best-offer .col-md-5 {
 		margin-top: 10px;
 		padding-right: 10px;
 		padding-left: 10px;
@@ -989,13 +989,13 @@ footer p em {
 		margin-left: 0px;
 	}
 
-	.testimonial .col-md-8 {
+	.testimonial .col-md-7 {
 		margin-top: 10px;
 		padding-left: 10px;
 		padding-right: 10px;
 	}
 
-	.testimonial .col-md-4 {
+	.testimonial .col-md-5 {
 		margin-top: 0px;
 		padding-right: 10px;
 		padding-left: 10px;
@@ -1020,13 +1020,13 @@ footer p em {
 		margin-right: 10px;
 	}
 
-	.contact-us .col-md-8 {
+	.contact-us .col-md-7 {
 		margin-top: 0px;
 		padding-left: 10px;
 		padding-right: 10px;
 	}
 
-	.contact-us .col-md-4 {
+	.contact-us .col-md-5 {
 		margin-top: 10px;
 		padding-right: 10px;
 		padding-left: 10px;

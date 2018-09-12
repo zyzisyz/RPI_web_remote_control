@@ -10,7 +10,7 @@ from time import sleep
 
 app = Flask(__name__)
 
-num = 0
+state = 0  # 记录空调状态
 temp = [26]
 wet = [12]
 Pi_time = [1]
@@ -31,94 +31,156 @@ def update_data():
         sleep(5)
 
 
-def Judge_on_off(num):
-    if num % 2 == 0:
-        return render_template('index.html', Temperature=temp[-1], Wet=wet[-1], Time=Pi_time[-1], Turn="turn off")
+def Judge_on_off():
+    global state
+    global temp
+    global wet
+    global Pi_time
+    if state > 0:
+        return render_template('index.html', Temperature=temp[-1], Wet=wet[-1], Time=Pi_time[-1], Turn="turn off", State=state)
     else:
-        return render_template('index.html', Temperature=temp[-1], Wet=wet[-1], Time=Pi_time[-1], Turn="turn on")
+        return render_template('index.html', Temperature=temp[-1], Wet=wet[-1], Time=Pi_time[-1], Turn="turn on", State=state)
 
 
 @app.route('/')
 def hello_world():
-    global temp
-    global wet
-    global Pi_time
-    return render_template('index.html', Temperature=temp[-1], Wet=wet[-1], Time=Pi_time[-1])
-
-
-@app.route('/index')
-def index():
-    return render_template('index.html', Temperature=temp[-1], Wet=wet[-1], Time=Pi_time[-1])
+    return Judge_on_off()
 
 
 @app.route('/IR_ON')
 def ir_on():
-    global num
-    global temp
-    global wet
-    global Pi_time
-    if num % 2 == 0:
-        print('ir_on')
-        os.system('irsend SEND_ONCE AIR KEY_OPEN')
-        num += 1
-        return render_template('index.html', Temperature=temp[-1], Wet=wet[-1], Time=Pi_time[-1], Turn="turn off")
-    else:
+    global state
+    if state:
         print("ir_off")
         os.system('irsend SEND_ONCE AIR KEY_OFF')
-        num += 1
-        return render_template('index.html', Temperature=temp[-1], Wet=wet[-1], Time=Pi_time[-1], Turn="turn on")
+        state = 0
+    else:
+        print('ir_on')
+        os.system('irsend SEND_ONCE AIR KEY_26')
+        state = 26
+    return Judge_on_off()
 
 
 @app.route('/IR_UP')
 def ir_up():
-    global temp
-    global wet
-    global Pi_time
-    global num
-    print('ir_up')
-    os.system('irsend SEND_ONCE AIR KEY_UP')
-    return Judge_on_off(num)
+    global state
+    if state == 16:
+        print('ir_up')
+        os.system('irsend SEND_ONCE AIR KEY_17')
+    elif state == 17:
+        print('ir_up')
+        os.system('irsend SEND_ONCE AIR KEY_18')
+    elif state == 18:
+        print('ir_up')
+        os.system('irsend SEND_ONCE AIR KEY_19')
+    elif state == 19:
+        print('ir_up')
+        os.system('irsend SEND_ONCE AIR KEY_20')
+    elif state == 20:
+        print('ir_up')
+        os.system('irsend SEND_ONCE AIR KEY_21')
+    elif state == 21:
+        print('ir_up')
+        os.system('irsend SEND_ONCE AIR KEY_22')
+    elif state == 22:
+        print('ir_up')
+        os.system('irsend SEND_ONCE AIR KEY_23')
+    elif state == 23:
+        print('ir_up')
+        os.system('irsend SEND_ONCE AIR KEY_24')
+    elif state == 24:
+        print('ir_up')
+        os.system('irsend SEND_ONCE AIR KEY_25')
+    elif state == 25:
+        print('ir_up')
+        os.system('irsend SEND_ONCE AIR KEY_26')
+    elif state == 26:
+        print('ir_up')
+        os.system('irsend SEND_ONCE AIR KEY_27')
+    elif state == 27:
+        print('ir_up')
+        os.system('irsend SEND_ONCE AIR KEY_28')
+    elif state == 28:
+        print('ir_up')
+        os.system('irsend SEND_ONCE AIR KEY_29')
+    elif state == 29:
+        print('ir_up')
+        os.system('irsend SEND_ONCE AIR KEY_30')
+    else:
+        return Judge_on_off()
+    state += 1
+    return Judge_on_off()
 
 
 @app.route('/IR_DOWN')
 def ir_DOWN():
-    global temp
-    global wet
-    global Pi_time
-    global num
-    print('ir_down')
-    os.system('irsend SEND_ONCE AIR KEY_DOWN')
-    return Judge_on_off(num)
+    global state
+    if state == 17:
+        print('ir_down')
+        os.system('irsend SEND_ONCE AIR KEY_16')
+    elif state == 18:
+        print('ir_down')
+        os.system('irsend SEND_ONCE AIR KEY_17')
+    elif state == 19:
+        print('ir_down')
+        os.system('irsend SEND_ONCE AIR KEY_18')
+    elif state == 20:
+        print('ir_down')
+        os.system('irsend SEND_ONCE AIR KEY_19')
+    elif state == 21:
+        print('ir_down')
+        os.system('irsend SEND_ONCE AIR KEY_20')
+    elif state == 22:
+        print('ir_down')
+        os.system('irsend SEND_ONCE AIR KEY_21')
+    elif state == 23:
+        print('ir_down')
+        os.system('irsend SEND_ONCE AIR KEY_22')
+    elif state == 24:
+        print('ir_down')
+        os.system('irsend SEND_ONCE AIR KEY_23')
+    elif state == 25:
+        print('ir_down')
+        os.system('irsend SEND_ONCE AIR KEY_24')
+    elif state == 26:
+        print('ir_down')
+        os.system('irsend SEND_ONCE AIR KEY_25')
+    elif state == 27:
+        print('ir_down')
+        os.system('irsend SEND_ONCE AIR KEY_26')
+    elif state == 28:
+        print('ir_down')
+        os.system('irsend SEND_ONCE AIR KEY_27')
+    elif state == 29:
+        print('ir_down')
+        os.system('irsend SEND_ONCE AIR KEY_28')
+    elif state == 30:
+        print('ir_down')
+        os.system('irsend SEND_ONCE AIR KEY_29')
+    else:
+        return Judge_on_off()
+    state -= 1
+    return Judge_on_off()
 
 
 @app.route('/LE_ON')
 def led_on():
-    global temp
-    global wet
-    global Pi_time
-    global num
-    rpi_control.LED_shine()
-    return Judge_on_off(num)
+    LED_turn_on()
+    return Judge_on_off()
+
 
 
 @app.route('/LED_OFF')
 def led_off():
-    global temp
-    global wet
-    global Pi_time
-    global num
-    rpi_control.LED_turn_off()
-    return Judge_on_off(num)
+
+    LED_turn_off()
+    return Judge_on_off()
 
 
 @app.route('/LED_SHINE')
 def led_shine():
-    global temp
-    global wet
-    global Pi_time
-    global num
-    rpi_control.LED_shine()
-    return Judge_on_off(num)
+    LED_shine()
+    return Judge_on_off()
 
 
 def run_app():
