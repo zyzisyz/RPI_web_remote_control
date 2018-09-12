@@ -64,9 +64,7 @@ def ir_on():
 @app.route('/IR_UP')
 def ir_up():
     global state
-    if state == 0 or state == 30:
-        pass
-    elif state == 16:
+    if state == 16:
         print('ir_up')
         os.system('irsend SEND_ONCE AIR KEY_17')
     elif state == 17:
@@ -108,6 +106,8 @@ def ir_up():
     elif state == 29:
         print('ir_up')
         os.system('irsend SEND_ONCE AIR KEY_30')
+    else:
+        return Judge_on_off()
     state += 1
     return Judge_on_off()
 
@@ -115,9 +115,7 @@ def ir_up():
 @app.route('/IR_DOWN')
 def ir_DOWN():
     global state
-    if state == 0 or state == 16:
-        pass
-    elif state == 17:
+    if state == 17:
         print('ir_down')
         os.system('irsend SEND_ONCE AIR KEY_16')
     elif state == 18:
@@ -159,6 +157,8 @@ def ir_DOWN():
     elif state == 30:
         print('ir_down')
         os.system('irsend SEND_ONCE AIR KEY_29')
+    else:
+        return Judge_on_off()
     state -= 1
     return Judge_on_off()
 
@@ -182,7 +182,7 @@ def led_shine():
 
 
 def run_app():
-    app.run(host='0.0.0.0', port=80, debug=True)
+    app.run(host='0.0.0.0', port=80)
 
 
 if __name__ == '__main__':
