@@ -3,4 +3,5 @@ __pycache__
 .vscode
 venv
 *.pyc
-.bak
+*.bak
+test.py

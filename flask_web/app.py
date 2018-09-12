@@ -4,7 +4,7 @@ import sqlite3
 from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash
 from get_data import web_data
 import os
-from rpi_control import *
+import rpi_control
 import threading
 from time import sleep
 
@@ -28,7 +28,7 @@ def update_data():
         print("temp:", temp[-1])
         print("wet:", wet[-1])
 
-        sleep(3)
+        sleep(5)
 
 
 def Judge_on_off():
@@ -169,8 +169,10 @@ def led_on():
     return Judge_on_off()
 
 
+
 @app.route('/LED_OFF')
 def led_off():
+
     LED_turn_off()
     return Judge_on_off()
 
