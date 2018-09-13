@@ -2,14 +2,13 @@
 # -*- coding: utf-8 -*- 
 import datetime
 from .Raspi_BMP085 import BMP085
-
+import time
 bmp = BMP085(0x77)
 
 
 def get_time():
-    now = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    print("time:", now)
-    return now
+    timestamp = int(time.time())
+    return timestamp
 
 
 def get_temperature():

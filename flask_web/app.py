@@ -1,33 +1,75 @@
 # -*- coding: utf-8 -*-
 
 import sqlite3
-from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash
+from flask import Flask, request, session, g, redirect, url_for,\
+    abort, render_template, flash
 from get_data import web_data
 import os
 import rpi_control
 import threading
 from time import sleep
+import time
+
 
 app = Flask(__name__)
 
 state = 0  # 记录空调状态
-temp = [26]
-wet = [12]
-Pi_time = [1]
+conn = sqlite3.connect('data.db')
 
 
-# 更新数据库
-def update_data():
+def connect_db():
+    return sqlite3.connect(app.config['data.db'])
+
+
+def init_db():
+    db = connect_db()
+    with app.open_resource('schema.sql', mode='r') as f:
+        db.cursor().executescript(f.read())
+        db.commit()
+
+
+@app.before_request
+def before_request():
+    g.db = connect_db()
+
+
+@app.after_request
+def after_request(response):
+    g.db.close()
+    return response
+
+
+# 更新form_db_data
+def update_form_db_data():
     while True:
-        global temp
-        global wet
-        global Pi_time
-        temp.append(web_data.get_temperature())
-        wet.append(web_data.get_wet())
+        temp = web_data.get_temperature()
+        wet = web_data.get_wet()
+        timestamp = web_data.get_time()
+        if timestamp % 3600 == 0:
+            c_time = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(timestamp))
+            sql = '''INSERT INTO from_data(temperature, wet, Ctime) values(?, ?, ?)'''
+            pare = (temp, wet, c_time)
+            g.db.execute(sql, pare)
+            print("temp:", temp)
+            print("wet:", wet)
+            print("ctime:", c_time)
+            g.db.commit()
 
-        print("temp:", temp[-1])
-        print("wet:", wet[-1])
 
+# 更新web_db数据库
+def update_web_db_data():
+    while True:
+        temp = web_data.get_temperature()
+        wet = web_data.get_wet()
+        timestamp = web_data.get_time()
+        c_time = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(timestamp))
+        sql = '''INSERT INTO web_data(temperature, wet, Ctime) values(?, ?, ?)'''
+        pare = (temp, wet, c_time)
+        g.db.execute(sql, pare)
+        print("temp:", temp)
+        print("wet:", wet)
+        print("ctime:", c_time)
+        g.db.commit()
         sleep(5)
 
 
@@ -37,9 +79,9 @@ def Judge_on_off():
     global wet
     global Pi_time
     if state > 0:
-        return render_template('index.html', Temperature=temp[-1], Wet=wet[-1], Time=Pi_time[-1], Turn="turn off", State=state)
+        return render_template('index.html', methods=['POST'], Temperature=temp[-1], Wet=wet[-1], Time=Pi_time[-1], Turn="turn off", State=state)
     else:
-        return render_template('index.html', Temperature=temp[-1], Wet=wet[-1], Time=Pi_time[-1], Turn="turn on", State=state)
+        return render_template('index.html', methods=['POST'], Temperature=temp[-1], Wet=wet[-1], Time=Pi_time[-1], Turn="turn on", State=state)
 
 
 @app.route('/')
@@ -64,133 +106,41 @@ def ir_on():
 @app.route('/IR_UP')
 def ir_up():
     global state
-    if state == 16:
-        print('ir_up')
-        os.system('irsend SEND_ONCE AIR KEY_17')
-    elif state == 17:
-        print('ir_up')
-        os.system('irsend SEND_ONCE AIR KEY_18')
-    elif state == 18:
-        print('ir_up')
-        os.system('irsend SEND_ONCE AIR KEY_19')
-    elif state == 19:
-        print('ir_up')
-        os.system('irsend SEND_ONCE AIR KEY_20')
-    elif state == 20:
-        print('ir_up')
-        os.system('irsend SEND_ONCE AIR KEY_21')
-    elif state == 21:
-        print('ir_up')
-        os.system('irsend SEND_ONCE AIR KEY_22')
-    elif state == 22:
-        print('ir_up')
-        os.system('irsend SEND_ONCE AIR KEY_23')
-    elif state == 23:
-        print('ir_up')
-        os.system('irsend SEND_ONCE AIR KEY_24')
-    elif state == 24:
-        print('ir_up')
-        os.system('irsend SEND_ONCE AIR KEY_25')
-    elif state == 25:
-        print('ir_up')
-        os.system('irsend SEND_ONCE AIR KEY_26')
-    elif state == 26:
-        print('ir_up')
-        os.system('irsend SEND_ONCE AIR KEY_27')
-    elif state == 27:
-        print('ir_up')
-        os.system('irsend SEND_ONCE AIR KEY_28')
-    elif state == 28:
-        print('ir_up')
-        os.system('irsend SEND_ONCE AIR KEY_29')
-    elif state == 29:
-        print('ir_up')
-        os.system('irsend SEND_ONCE AIR KEY_30')
-    else:
-        return Judge_on_off()
+    rpi_control.IR_turn_up(state)
     state += 1
     return Judge_on_off()
 
 
 @app.route('/IR_DOWN')
-def ir_DOWN():
+def ir_down():
     global state
-    if state == 17:
-        print('ir_down')
-        os.system('irsend SEND_ONCE AIR KEY_16')
-    elif state == 18:
-        print('ir_down')
-        os.system('irsend SEND_ONCE AIR KEY_17')
-    elif state == 19:
-        print('ir_down')
-        os.system('irsend SEND_ONCE AIR KEY_18')
-    elif state == 20:
-        print('ir_down')
-        os.system('irsend SEND_ONCE AIR KEY_19')
-    elif state == 21:
-        print('ir_down')
-        os.system('irsend SEND_ONCE AIR KEY_20')
-    elif state == 22:
-        print('ir_down')
-        os.system('irsend SEND_ONCE AIR KEY_21')
-    elif state == 23:
-        print('ir_down')
-        os.system('irsend SEND_ONCE AIR KEY_22')
-    elif state == 24:
-        print('ir_down')
-        os.system('irsend SEND_ONCE AIR KEY_23')
-    elif state == 25:
-        print('ir_down')
-        os.system('irsend SEND_ONCE AIR KEY_24')
-    elif state == 26:
-        print('ir_down')
-        os.system('irsend SEND_ONCE AIR KEY_25')
-    elif state == 27:
-        print('ir_down')
-        os.system('irsend SEND_ONCE AIR KEY_26')
-    elif state == 28:
-        print('ir_down')
-        os.system('irsend SEND_ONCE AIR KEY_27')
-    elif state == 29:
-        print('ir_down')
-        os.system('irsend SEND_ONCE AIR KEY_28')
-    elif state == 30:
-        print('ir_down')
-        os.system('irsend SEND_ONCE AIR KEY_29')
-    else:
-        return Judge_on_off()
+    rpi_control.IR_turn_down(state)
     state -= 1
     return Judge_on_off()
 
 
 @app.route('/LE_ON')
 def led_on():
-    LED_turn_on()
+    rpi_control.LED_turn_on()
     return Judge_on_off()
-
 
 
 @app.route('/LED_OFF')
 def led_off():
-
-    LED_turn_off()
-    return Judge_on_off()
-
-
-@app.route('/LED_SHINE')
-def led_shine():
-    LED_shine()
+    rpi_control.LED_turn_off()
     return Judge_on_off()
 
 
 def run_app():
-    app.run(host='0.0.0.0', port=80)
+    app.run(host='0.0.0.0', port=80, threaded=True)
 
 
 if __name__ == '__main__':
     os.system('sudo /etc/init.d/lircd restart')
+    init_db()
     threads = []
-    threads.append(threading.Thread(target=update_data))
+    threads.append(threading.Thread(target=update_web_db_data))
+    threads.append(threading.Thread(target=update_form_db_data))
     threads.append(threading.Thread(target=run_app))
     for t in threads:
         t.start()
