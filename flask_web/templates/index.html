@@ -16,10 +16,9 @@
     <link rel="stylesheet" href="../static/css/owl-carousel.css">
     <link rel="stylesheet" href="../static/css/datepicker.css">
     <link rel="stylesheet" href="../static/css/templatemo-style.css">
-    <link rel="stylesheet" href="../static/css/smg-font.css"
-
-    <script src="../static/../static/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
-    <script src="../static/../static/js/echarts.min.js"></script>  
+    <link rel="stylesheet" href="../static/css/smg-font.css" <script src="../static/../static/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js">
+    </script>
+    <script src="../static/../static/js/echarts.min.js"></script>
 </head>
 
 <body>
@@ -29,7 +28,9 @@
                 <div class="col-md-7">
                     <div class="left-banner-content">
                         <div class="text-content">
-                            <h5><font color=white>Welcome to use RPI web remote control</font></h5>
+                            <h5>
+                                <font color=white>Welcome to use RPI web remote control</font>
+                            </h5>
                             <div class="line-dec"></div>
                             <h2>
                                 <font color=white>当前宿舍室内</font>
@@ -44,20 +45,20 @@
                             <div class="white-border-button">
                                 <a href="/IR_UP">Turn up</a>
                             </div>
-                            
+
                             <div class="white-border-button">
                                 <a href="/IR_DOWN">Turn down</a>
                             </div>
-                           
-                            
+
+
                         </div>
                     </div>
                 </div>
                 <div class="col-md-5">
                     <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-                    <div id="main" style="width: 600px;height:400px;"></div>
+                    <div id="chart" style="height:500px;margin:100px auto;width:80%;"></div>
                     <script type="text/javascript">
-                        var myChart = echarts.init(document.getElementById('main'));
+                        var myChart = echarts.init(document.getElementById('chart'));
                         var option = {
                             tooltip: {
                                 trigger: 'axis'
@@ -156,7 +157,10 @@
                         <div class="row">
                             <div class="col-md-6 col-sm-12">
                                 <h2>Awesome &amp; Unique<br>Layout <em>Theme</em></h2>
-                                <p>Avalon is a full-width responsive web template. Please tell your friends about <a href="#" target="_parent">templatemo</a>. Thank you. Feel free to use this template. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cura bitur et sem blandit, rhoncus ante, varius libero. Cras elemen tum tincidunt ullamcorper.</p>
+                                <p>Avalon is a full-width responsive web template. Please tell your friends about <a
+                                        href="#" target="_parent">templatemo</a>. Thank you. Feel free to use this
+                                    template. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cura bitur et
+                                    sem blandit, rhoncus ante, varius libero. Cras elemen tum tincidunt ullamcorper.</p>
                                 <ul>
                                     <li>+ Aenean eget ex faucibus, tempor nibh vel.</li>
                                     <li>+ Bibendum tortor. Suspendisse a diam viverra.</li>
