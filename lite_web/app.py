@@ -68,7 +68,7 @@ def ir_off():
 @app.route("/IR_UP/")
 def ir_up():
     global state
-    if state != 0 and state < 28 and state >- 17:
+    if state != 0 and state < 28 and state > - 17:
         print("ir_up")
         rpi_control.IR_turn_up(state)
         state += 1
@@ -86,6 +86,18 @@ def ir_down():
         state -= 1
     else:
         pass
+    return return_fun()
+
+
+@app.route('/LED_ON')
+def led_on():
+    rpi_control.LED_turn_on()
+    return return_fun()
+
+
+@app.route('/LED_OFF')
+def led_off():
+    rpi_control.LED_turn_off()
     return return_fun()
 
 
