@@ -9,13 +9,14 @@
     <link rel="stylesheet" href="../static/css/bootstrap.min.css">
     <link rel="stylesheet" href="../static/css/index.css">
     <script src="../static/js/echarts.min.js"></script>
+    <link rel="shortcut icon" href="../static/img/favicon.ico">
     <title>zy-web</title>
 </head>
 
 <body>
     <div class="top">
         <br><br>
-        <h1>welcome to use RPI web remote control</h1>
+        <p>welcome to use RPI web remote control</p>
         <div class="line-dec"></div>
         <br><br>
         <div class="white-border-button">
@@ -31,11 +32,19 @@
             <a href="/IR_OFF">温度：降</a>
         </div>
         <br><br>
-        <h2>宿舍温湿度实时监控：</h2>
+        <h2>宿舍温湿度实时监控</h2>
         <br>
-        <h3>当前温度：{{Temperature}}} 当前湿度：{{Wet}}</h3>
+        <h3>当前温度：{{Temperature}}</h3>
+        <br>
+        <h3>当前湿度：{{Wet}}</h3>
     </div>
-    <div id="chart" class"buttom"></div>
+    <div class="buttom">
+        <br>
+        <br>
+        <h1>最近7小时宿舍温度和湿度变换</h1>
+        <div id="chart"></div>
+    </div>
+
     <script type="text/javascript" src="../static/js/chart.js"></script>
 
 </body>

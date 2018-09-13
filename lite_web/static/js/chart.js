@@ -2,7 +2,7 @@
 var myChart = echarts.init(document.getElementById('chart'));
 var option = {
     title: {
-        text: '宿舍24小时内温度和湿度变化',
+        text: '',
         subtext: ''
     },
     tooltip: {
@@ -26,14 +26,14 @@ var option = {
         {
             type: 'category',
             boundaryGap: false,
-            data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+            data: ['1', '2', '3', '4', '5', '6', '7']
         }
     ],
     yAxis: [
         {
             type: 'value',
             axisLabel: {
-                formatter: '{value} °C / %'
+                formatter: '{value}'
             }
         }
     ],
@@ -41,7 +41,7 @@ var option = {
         {
             name: '温度',
             type: 'line',
-            data: [11, 11, 15, 13, 12, 13, 10],
+            data: [26.3, 27.1, 25.2, 28.1, 28.9, 26.4, 25.9],
             markPoint: {
                 data: [
                     { type: 'max', name: '最大值' },
@@ -57,10 +57,11 @@ var option = {
         {
             name: '湿度',
             type: 'line',
-            data: [1, -2, 2, 5, 3, 2, 0],
+            data: [12, 12, 12, 15, 13, 12, 10],
             markPoint: {
                 data: [
-                    { name: '周最低', value: -2, xAxis: 1, yAxis: -1.5 }
+                    { type: 'max', name: '最大值' },
+                    { type: 'min', name: '最小值' }
                 ]
             },
             markLine: {
