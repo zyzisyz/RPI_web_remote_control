@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="description" content="">
-    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/bootstrap.css">
     <link rel="stylesheet" href="../static/css/index.css">
-    <script src="../static/js/echarts.min.js"></script>
     <link rel="shortcut icon" href="../static/img/favicon.ico">
+    <link rel="stylesheet" href="../static/css/smg-font.css">
+    <script src="../static/js/echarts.min.js"></script>
     <title>zy-web</title>
 </head>
 
@@ -19,19 +20,37 @@
         <p>welcome to use RPI web remote control</p>
         <div class="line-dec"></div>
         <br><br>
-        <div class="white-border-button">
-            <a href="/IR_ON">空调：开</a>
-        </div>
-        <div class="white-border-button">
-            <a href="/IR_OFF">空调：关</a>
-        </div>
-        <div class="white-border-button">
-            <a href="/IR_UP">温度：增</a>
-        </div>
-        <div class="white-border-button">
-            <a href="/IR_OFF">温度：降</a>
-        </div>
-        <br><br>
+        <h2>当前空调温度</h2>
+        <br>
+        <h1 id="temp_num">{{State}}</h1>
+        <table>
+            <tr>
+                <td>
+                    <div class="white-border-button">
+                        <a href="/IR_ON">空调：开</a>
+                    </div>
+                </td>
+                <td>
+                    <div class="white-border-button">
+                        <a href="/IR_OFF">空调：关</a>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="white-border-button">
+                        <a href="/IR_UP">温度：增</a>
+                    </div>
+                </td>
+                <td>
+                    <div class="white-border-button">
+                        <a href="/IR_DOWN">温度：降</a>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <br>
+        <br>
         <h2>宿舍温湿度实时监控</h2>
         <br>
         <h3>当前温度：{{Temperature}}</h3>
@@ -41,13 +60,23 @@
     <div class="buttom">
         <br>
         <br>
-        <h1>最近7小时宿舍温度和湿度变换</h1>
+        <h7>最近7小时宿舍温度和湿度变换</h7>
         <div id="chart"></div>
+        <script type="text/javascript" src="../static/js/chart.js"></script>
     </div>
-
-    <script type="text/javascript" src="../static/js/chart.js"></script>
-
+    <div class="led">
+        <br><br>
+        <h1>LED灯控制</h1>
+        <div class="white-border-button">
+            <a href="/LED_ON">LED灯：开</a>
+        </div>
+        <div class="white-border-button">
+            <a href="/LED_OFF">LED灯：关</a>
+        </div>
+    </div>
+    <footer>
+        <p>Copyright &copy; 2018 zyziszy</p>
+    </footer>
 </body>
-
 
 </html>

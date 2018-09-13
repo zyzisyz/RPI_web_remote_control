@@ -2,11 +2,16 @@
 # -*- coding: utf-8 -*-
 import os
 import time
-import RPi.GPIO as GPIO
+
+try:
+    import RPi.GPIO as GPIO
+    GPIO.setmode(GPIO.BOARD)
+    GPIO.setup(37, GPIO.OUT)
+except:
+    print("can not import GPIO")
 
 
-GPIO.setmode(GPIO.BOARD)
-GPIO.setup(37, GPIO.OUT)
+
 
 
 def IR_turn_on():
