@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*- 
 import datetime
 from .Raspi_BMP085 import BMP085
-import smbus
+import smbus2
 from .am2320 import Am2320sensor
 
 bmp = BMP085(0x77)
@@ -16,21 +16,21 @@ def get_time():
 
 def get_temperature():
     #temp = bmp.readTemperature()
-    sensor.setup()
-    temp = sensor.readTemperature()
+   
+    temp = sensor.read()['temperature']
     print("Temperature: %.2f C" % temp)
     return float(temp)
 
 
 def get_wet():
     #wet = 12
-    sensor.setup()
-    humidity = sensor.readHumidity()
+    humidity = sensor.read()['humidity']
     print("humidity:", humidity)
     return humidity
 
 
 if __name__ == '__main__':
+    sensor.setup()
     print("time:", get_time())
     print("temperature:", get_temperature())
     print("wet:", get_wet())
