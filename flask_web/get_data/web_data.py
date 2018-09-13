@@ -3,10 +3,10 @@
 import datetime
 from .Raspi_BMP085 import BMP085
 import smbus
-import am2320
+from .am2320 import Am2320sensor
 
 bmp = BMP085(0x77)
-sensor = am2320.Am2320sensor()
+sensor = Am2320sensor()
 
 def get_time():
     now = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
