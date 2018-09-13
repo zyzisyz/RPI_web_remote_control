@@ -23,10 +23,10 @@ def get_temperature():
 
 
 def get_wet():
-    #wet = 12
+    #humidity = 12
     humidity = sensor.read()['humidity']
-    print("humidity:", humidity)
-    return humidity
+    print("humidity: %.2f C" % humidity)
+    return float(humidity)
 
 
 if __name__ == '__main__':
