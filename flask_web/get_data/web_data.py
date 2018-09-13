@@ -4,14 +4,14 @@ import datetime
 from .Raspi_BMP085 import BMP085
 import smbus2
 from .am2320 import Am2320sensor
+import time
 
 bmp = BMP085(0x77)
 sensor = Am2320sensor()
 
 def get_time():
-    now = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    print("time:", now)
-    return now
+    timestamp = int(time.time())
+    return timestamp
 
 
 def get_temperature():
