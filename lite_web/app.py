@@ -21,10 +21,17 @@ app = Flask(__name__)
 
 state = 0
 degree = 26
-signal = ['irsend SEND_ONCE AIR KEY_OFF', 'irsend SEND_ONCE AIR KEY_16', 'irsend SEND_ONCE AIR KEY_17', 'irsend SEND_ONCE AIR KEY_18', 
-            'irsend SEND_ONCE AIR KEY_19', 'irsend SEND_ONCE AIR KEY_20', 'irsend SEND_ONCE AIR KEY_21', 'irsend SEND_ONCE AIR KEY_22',
-            'irsend SEND_ONCE AIR KEY_23', 'irsend SEND_ONCE AIR KEY_24', 'irsend SEND_ONCE AIR KEY_25', 'irsend SEND_ONCE AIR KEY_26',
-            'irsend SEND_ONCE AIR KEY_27', 'irsend SEND_ONCE AIR KEY_28', 'irsend SEND_ONCE AIR KEY_29', 'irsend SEND_ONCE AIR KEY_30']
+signal = [
+    'irsend SEND_ONCE AIR KEY_OFF', 'irsend SEND_ONCE AIR KEY_16',
+    'irsend SEND_ONCE AIR KEY_17', 'irsend SEND_ONCE AIR KEY_18',
+    'irsend SEND_ONCE AIR KEY_19', 'irsend SEND_ONCE AIR KEY_20',
+    'irsend SEND_ONCE AIR KEY_21', 'irsend SEND_ONCE AIR KEY_22',
+    'irsend SEND_ONCE AIR KEY_23', 'irsend SEND_ONCE AIR KEY_24',
+    'irsend SEND_ONCE AIR KEY_25', 'irsend SEND_ONCE AIR KEY_26',
+    'irsend SEND_ONCE AIR KEY_27', 'irsend SEND_ONCE AIR KEY_28',
+    'irsend SEND_ONCE AIR KEY_29', 'irsend SEND_ONCE AIR KEY_30'
+]
+
 
 def return_fun():
     global state
@@ -110,4 +117,4 @@ def led_off():
 
 if __name__ == '__main__':
     os.system('sudo /etc/init.d/lircd restart')
-    app.run(host='0.0.0.0', port=8000)
+    app.run(host='0.0.0.0', port=80)
