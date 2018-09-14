@@ -15,9 +15,9 @@ def get_time():
 
 
 def get_temperature():
-    #temp = bmp.readTemperature()
+    temp = bmp.readTemperature()
    
-    temp = sensor.read()['temperature']
+    #temp = sensor.read()['temperature']
     print("Temperature: %.2f C" % temp)
     return float(temp)
 
