@@ -20,7 +20,11 @@ except:
 app = Flask(__name__)
 
 state = 0
-
+degree = 26
+signal = ['irsend SEND_ONCE AIR KEY_OFF', 'irsend SEND_ONCE AIR KEY_16', 'irsend SEND_ONCE AIR KEY_17', 'irsend SEND_ONCE AIR KEY_18', 
+            'irsend SEND_ONCE AIR KEY_19', 'irsend SEND_ONCE AIR KEY_20', 'irsend SEND_ONCE AIR KEY_21', 'irsend SEND_ONCE AIR KEY_22',
+            'irsend SEND_ONCE AIR KEY_23', 'irsend SEND_ONCE AIR KEY_24', 'irsend SEND_ONCE AIR KEY_25', 'irsend SEND_ONCE AIR KEY_26',
+            'irsend SEND_ONCE AIR KEY_27', 'irsend SEND_ONCE AIR KEY_28', 'irsend SEND_ONCE AIR KEY_29', 'irsend SEND_ONCE AIR KEY_30']
 
 def return_fun():
     global state
@@ -32,10 +36,10 @@ def return_fun():
         wet = 12.2
     if state != 0:
         return render_template('index.html', methods=['POST'],
-                               Temperature=temp, Wet=wet, State=state)
+                               Temperature=temp, Wet=wet, Degree=degree)
     else:
         return render_template('index.html', methods=['POST'],
-                               Temperature=temp, Wet=wet, State='空调关闭')
+                               Temperature=temp, Wet=wet, Degree=0)
 
 
 @app.route('/')
@@ -50,10 +54,11 @@ def index():
 
 @app.route('/IR_ON/')
 def ir_on():
+    global degree
     global state
     print('ir_on')
-    os.system('irsend SEND_ONCE AIR KEY_26')
-    state = 26
+    os.system(signal[degree-15])
+    state = 1
     return return_fun()
 
 
@@ -61,17 +66,18 @@ def ir_on():
 def ir_off():
     global state
     print('ir_off')
+    os.system(signal[0])
     state = 0
     return return_fun()
 
 
 @app.route("/IR_UP/")
 def ir_up():
+    global degree
     global state
-    if state != 0 and state < 28 and state > - 17:
-        print("ir_up")
-        rpi_control.IR_turn_up(state)
-        state += 1
+    if state != 0 and degree < 30:
+        os.system(signal[degree-14])
+        degree += 1
     else:
         pass
     return return_fun()
@@ -79,11 +85,12 @@ def ir_up():
 
 @app.route("/IR_DOWN/")
 def ir_down():
+    global degree
     global state
-    if state != 0 and state <= 28 and state > 17:
+    if state != 0 and degree > 16:
         print("ir_down")
-        rpi_control.IR_turn_down(state)
-        state -= 1
+        os.system(signal[degree-16])
+        degree -= 1
     else:
         pass
     return return_fun()
@@ -102,4 +109,5 @@ def led_off():
 
 
 if __name__ == '__main__':
+    os.system('sudo /etc/init.d/lircd restart')
     app.run(host='0.0.0.0', port=8000)
