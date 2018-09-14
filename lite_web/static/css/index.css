@@ -1,20 +1,29 @@
 * {
     margin: 0;
     padding: 0;
-    background-position: center center
+    background-position: center center;
+    line-height: 30px;
 }
 
 .top {
     background-image: url(../img/bg.jpg);
-    height: 900px;
-    margin: 50px auto;
-    width: 80%;
+    background-color: black;
+    height: 1000px;
+    margin: 0 auto;
+    width: 100%;
     text-align: center;
 }
 
-h1 {
+p {
     color: #fff;
-    size: 20px;
+}
+
+h1 {
+    size: 40px;
+}
+
+.led h1 {
+    color: white;
 }
 
 h2 {
@@ -33,13 +42,27 @@ h3 {
     margin-top: 20px;
     margin-bottom: 30px;
     background-color: white;
-    text-align: center
+    text-align: center;
+}
+
+table {
+    text-align: center;
+    border: 0;
+    margin: 0 auto;
+    width: 250px;
+}
+
+.buttom {
+    margin: 30px, auto;
+    text-align: center;
+    background-color: white;
+    height: 700px;
 }
 
 #chart {
     height: 500px;
     margin: 100px auto;
-    width: 80%;
+    width: 100%;
 }
 
 .white-border-button {
@@ -57,4 +80,19 @@ h3 {
     font-weight: 700;
     text-decoration: none;
     transition: all 0.5s;
+}
+
+.led {
+    background-color: black;
+    height: 350px;
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+}
+
+footer {
+    text-align: center;
+    margin: 0 auto;
+    height: 40px;
+    background-color: black
 }

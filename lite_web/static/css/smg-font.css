@@ -1,0 +1,11 @@
+@font-face {
+    font-family: 'smg';
+    src: url('../fonts/LCD2U___.eot');
+    src: url('../fonts/LCD2U___.eot') format('embedded-opentype'), url('../fonts/LCD2U___.woff2') format('woff2'), url('../fonts/LCD2U___.woff') format('woff'), url('../fonts/LCD2U___.ttf') format('truetype'), url('../fonts/LCD2U___.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+h7 {
+    font: normal normal normal 80px smg;
+}
