@@ -57,7 +57,7 @@ var option = {
         {
             name: '湿度',
             type: 'line',
-            data: [12, 12, 12, 15, 13, 12, 10],
+            data: [32.1, 34.5, 33.1, 34.8, 34.1, 32.1, 32.7],
             markPoint: {
                 data: [
                     { type: 'max', name: '最大值' },

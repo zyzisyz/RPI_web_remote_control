@@ -33,7 +33,12 @@ h2 {
 
 h3 {
     color: #fff;
-    size: 20px
+    size: 20px;
+}
+
+h4 {
+    color: black;
+    size: 20px;
 }
 
 .line-dec {

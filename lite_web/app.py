@@ -1,43 +1,37 @@
 # -*- coding: utf-8 -*-
 
-import sqlite3
 from flask import Flask, request, session, g, redirect, url_for,\
     abort, render_template, flash
 import os
 import rpi_control
-import threading
-from time import sleep
-import time
 
 
 try:
-    from get_data import web_data
-    print("import web_data successfully!")
+    import get_data
+    print("import get_data successfully!")
 except:
-    print("can not import web_data moudle")
+    print("can not import get_data moudle")
 
 
 app = Flask(__name__)
 
 state = 0
 degree = 26
-signal = [
-    'irsend SEND_ONCE AIR KEY_OFF', 'irsend SEND_ONCE AIR KEY_16',
-    'irsend SEND_ONCE AIR KEY_17', 'irsend SEND_ONCE AIR KEY_18',
-    'irsend SEND_ONCE AIR KEY_19', 'irsend SEND_ONCE AIR KEY_20',
-    'irsend SEND_ONCE AIR KEY_21', 'irsend SEND_ONCE AIR KEY_22',
-    'irsend SEND_ONCE AIR KEY_23', 'irsend SEND_ONCE AIR KEY_24',
-    'irsend SEND_ONCE AIR KEY_25', 'irsend SEND_ONCE AIR KEY_26',
-    'irsend SEND_ONCE AIR KEY_27', 'irsend SEND_ONCE AIR KEY_28',
-    'irsend SEND_ONCE AIR KEY_29', 'irsend SEND_ONCE AIR KEY_30'
-]
+signal = ['irsend SEND_ONCE AIR KEY_OFF', 'irsend SEND_ONCE AIR KEY_16',
+          'irsend SEND_ONCE AIR KEY_17', 'irsend SEND_ONCE AIR KEY_18',
+          'irsend SEND_ONCE AIR KEY_19', 'irsend SEND_ONCE AIR KEY_20',
+          'irsend SEND_ONCE AIR KEY_21', 'irsend SEND_ONCE AIR KEY_22',
+          'irsend SEND_ONCE AIR KEY_23', 'irsend SEND_ONCE AIR KEY_24',
+          'irsend SEND_ONCE AIR KEY_25', 'irsend SEND_ONCE AIR KEY_26',
+          'irsend SEND_ONCE AIR KEY_27', 'irsend SEND_ONCE AIR KEY_28',
+          'irsend SEND_ONCE AIR KEY_29', 'irsend SEND_ONCE AIR KEY_30']
 
 
 def return_fun():
     global state
     try:
-        temp = web_data.get_temperature()
-        wet = web_data.get_wet()
+        temp = get_data.get_temperature()
+        wet = get_data.get_humidity()
     except:
         temp = 26.6
         wet = 12.2
