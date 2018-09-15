@@ -22,15 +22,9 @@
 
 因为对前端不是很熟，这个网页写的很简单。但基本实现了我们需要显示的功能和按键。
 
-#### 电脑
-
 ![image](https://github.com/zyzisyz/RPI_WEB_REMOTE_CONTROL/blob/master/img/1.png)
 
-#### 手机
-
-![image](https://github.com/zyzisyz/RPI_WEB_REMOTE_CONTROL/blob/master/img/2.jpg)
-
-![image](https://github.com/zyzisyz/RPI_WEB_REMOTE_CONTROL/blob/master/img/3.png)
+更多效果图可以查看img文件夹下的图片
 
 ### 实物连接图
 
