@@ -60,17 +60,21 @@ class AM232x:
         return (temp, humi)
 
 
-am232x = AM232x(1)
-(t, h) = am232x.readSensor()
-print("Temperature: %.2f C" % (t))
-print("Humidity: %.2f" % (h))
+def get_data():
+    am232x = AM232x(1)
+    (t, h) = am232x.readSensor()
+    print("Temperature: %.2f C" % (t))
+    print("Humidity: %.2f" % (h))
+    return (t, h)
 
 
 def get_temperature():
+    (t, h) = get_data()
     return float(t)
 
 
 def get_humidity():
+    (t, h) = get_data()
     return float(h)
 
 
